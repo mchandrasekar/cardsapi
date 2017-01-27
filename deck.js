@@ -45,7 +45,7 @@ var Deck = function (numberOfDecks) {
   this.numberOfDecks = numberOfDecks || 1;
   this.cards_present = this.generateCards();
   this.shuffle();
-  this.cards_discarded = new Cards();
+  this.cards_taken = new Cards();
   this.id = shortid.generate();
 };
 
@@ -74,7 +74,7 @@ Deck.prototype.getCard = function (numberOfCards) {
   };
 
   _.pullAll(this.cards_present, cardsPulled);
-  this.cards_discarded = _.concat(this.cards_discarded, cardsPulled);
+  this.cards_taken = _.concat(this.cards_taken, cardsPulled);
   return cardsPulled;
 };
 
