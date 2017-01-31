@@ -3,6 +3,9 @@
   "name": "cardsapi",
   "dependencies": {
     "lodash": "^4.17.4",
-    "shortid": "^2.2.6"
+    "shortid": "^2.2.6",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "json-query": "^2.2.0"
   }
 }
