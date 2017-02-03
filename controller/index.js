@@ -7,6 +7,7 @@ router.get('/all/decks', getDecks);
 router.post('/:deck_id/shuffle/', shuffleDeck);
 router.get('/:deck_id/draw', getCards);
 router.get('/hand/show', showHand);
+router.post('/hand/clear', clearHand);
 
 function createDeck(req, res) {
   var deckCount = req.query.deck_count;
@@ -14,6 +15,7 @@ function createDeck(req, res) {
     var deckInfo = req.app.get('game').createDeck(parseInt(deckCount));
     res.status(200).send(JSON.stringify(deckInfo));
   } else {
+    console.log('Generating error');
     res.status(400).send(
       errorMessageGenerator('Deck count should be greater than 0'));
   }
@@ -63,6 +65,11 @@ function getCards(req, res) {
 
 function showHand(req, res) {
   res.status(200).send(req.app.get('game').printHand());
+}
+
+function clearHand(req, res) {
+  var hand = req.app.get('game').clearHand();
+  res.status(200).send(hand);
 }
 
 function errorMessageGenerator(message, statusCode) {
