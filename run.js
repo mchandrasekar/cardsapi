@@ -22,12 +22,9 @@ function playGame() {
     process.exit(0);
   }
 
-  if (option < 0 && option > 3) {
-    console.log('Invalid option');
-    playGame();
-  } else if (option == 1) {
+  if (option == 1) {
     var numberOfDecks = prompt('Enter number of decks: ');
-    createDeckRequest(numberOfDecks);
+    createDeck(numberOfDecks);
   } else if (option == 2) {
     showAllDecks();
   } else if (option == 3) {
@@ -47,7 +44,7 @@ function playGame() {
   }
 }
 
-function createDeckRequest(numberOfDecks) {
+function createDeck(numberOfDecks) {
   var requestOptions = {
     method: 'POST',
     uri: 'http://localhost:3000/api/deck/new/shuffle',
